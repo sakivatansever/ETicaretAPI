@@ -14,3 +14,4 @@ namespace ETicaretAPI.Application.ViewModels.Products
         public float Price { get; set; }
     }
 }
+

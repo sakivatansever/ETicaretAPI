@@ -12,6 +12,8 @@
 
   <ItemGroup>
     <Folder Include="Filters\Va\" />
+    <Folder Include="Services\Storage\Aws\" />
+    <Folder Include="Services\Storage\Azure\" />
   </ItemGroup>
 
 </Project>

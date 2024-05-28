@@ -1,4 +1,6 @@
+using ETicaret.Infrastructure;
 using ETicaret.Infrastructure.Filters;
+using ETicaret.Infrastructure.Services.Storage.Local;
 using ETicaretAPI.Application.Validators.Products;
 using ETicaretAPI.Persistence;
 using FluentValidation.AspNetCore;
@@ -12,6 +14,10 @@ namespace ETicaretAPI.API
             var builder = WebApplication.CreateBuilder(args);
 
             builder.Services.AddPersistenceServices ();
+            builder.Services.AddInfrastructureServices();
+            //    builder.Services.AddStorage(StorageType.Azure);
+            builder.Services.AddStorage<LocalStorage>();
+            
             builder.Services.AddCors(options=>options.AddDefaultPolicy(policy=>
             policy.WithOrigins("http://localhost:4200", "https://localhost:4200").AllowAnyHeader().AllowAnyMethod()
            // policy.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin() herþeye izin ver
@@ -34,6 +40,8 @@ namespace ETicaretAPI.API
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+
+            app.UseStaticFiles();
             app.UseCors();
 
             app.UseHttpsRedirection();

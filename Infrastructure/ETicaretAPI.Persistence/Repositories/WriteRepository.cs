@@ -53,9 +53,6 @@ namespace ETicaretAPI.Persistence.Repositories
 
         }
 
-
-
-
         public bool Update(T model)
         {
             EntityEntry entityEntry = Table.Update(model);
